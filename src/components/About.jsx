@@ -13,9 +13,9 @@ const About = () => {
   };
 
   return (
-    <section className={`${styles.paddingX} flex max-sm:flex-col relative w-full h-screen` }>
+    <section id='about' className={`${styles.paddingX} border-2 border-red-400 flex max-sm:flex-col relative w-full h-screen` }>
       
-      <div className="w-1/2 p-4 max-sm:w-full">
+      <div className="flex flex-col max-sm:p-3 justify-start items-center w-1/2 p-16  max-sm:w-full ">
       <h1 className={`${styles.heroHeadText} text-white pt-4`}>About <span className='text-[#915eff]'>Myself</span></h1>
       <p className={`${styles.heroSubText} mt-2 text-white-100`}>
           I am a <span className='text-[#915eff]'>Professional Photographer.</span> I will shoot <br className="sm:block hidden" /> your <span className='text-[#915eff]'>Portfolio.</span> I am based in Islamabad.

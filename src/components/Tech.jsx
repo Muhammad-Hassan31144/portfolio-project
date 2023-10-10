@@ -34,7 +34,6 @@ const Card = ({ collection }) => {
         }}
         navigation={true}
         modules={[EffectCoverflow, Pagination, Navigation]}
-        // onSlideChange={() => setSelectedImageIndex(null)}
         className="swiper_container mySwiper"
       >
         {collection.pic.map((image, imgIndex) => (
@@ -43,8 +42,6 @@ const Card = ({ collection }) => {
               src={image}
               alt={`${collection.title} image ${imgIndex}`}
               className="swiper-slide h-[600px] w-full object-contain"
-              // className={`gallery-image ${selectedImageIndex === imgIndex ? 'transform scale-150 z-10 cursor-zoom-out' : ''}`}
-              // onClick={() => setSelectedImageIndex(selectedImageIndex === imgIndex ? null : imgIndex)}
             />
           </SwiperSlide>
         ))}
@@ -56,7 +53,7 @@ const Card = ({ collection }) => {
 )}
 const Tech = () => {
   return (
-  <>
+  <div id="work" className=" pt-9">
     <motion.div variants={textVariant()}>
       <p className={`${styles.sectionSubText} text-center pt-3`}>
         Have a Look at my Portfolio
@@ -69,7 +66,7 @@ const Tech = () => {
           <Card key={collection.title} collection={collection} />
     ))}
 
-  </>
+  </div>
 );
 };
 

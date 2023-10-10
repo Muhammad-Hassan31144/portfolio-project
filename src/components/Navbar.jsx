@@ -8,9 +8,16 @@ import { logo, menu, close } from '../assets';
 const Navbar = () => {
   const [active, setActive] = useState(" ");
   const [toggle, setToggle] = useState(false);
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center py-4 fixed top-0 z-20 bg-primary`}>
-    <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+    <nav className={`${styles.paddingX} w-full  flex items-center py-4 fixed top-0 z-20 bg-primary`}>
+    <div className="w-full max-w-7xl flex justify-between items-center mx-auto">
       <Link
         to="/"
         className="flex items-center gap-2"
@@ -35,8 +42,8 @@ const Navbar = () => {
             // onClick={() => {setActive(link.title)}}
           >
             <Link 
-              to={`/${link.title}`}
-              onClick={() => {setActive(link.title)}}
+              to={`#${link.title}`}
+              onClick={() => scrollToSection(link.id)}
             >
               {link.title}</Link>
           </li>
