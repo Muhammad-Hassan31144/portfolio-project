@@ -29,7 +29,7 @@ const Navbar = () => {
         <div className="pt-2">
         <img className="mx-auto my-auto w-10 h-10 object-contain pr-1 pt-1" src={logo} alt="logo" />
         </div>
-        <p className="text-white text-[18px] font-bold cursor-pointer flex">Inno <span className="sm:block hidden">&nbsp;Studio</span></p> 
+        <p className="text-secondary text-[18px] font-bold cursor-pointer flex">Inno <span className="sm:block hidden">&nbsp;Studio</span></p> 
         
       </Link>
       <ul className="list-none hidden sm:flex flex-row gap-10">

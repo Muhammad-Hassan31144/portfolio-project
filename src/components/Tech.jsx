@@ -14,7 +14,7 @@ const Card = ({ collection }) => {
   
   return(
       <div className="flex flex-col">
-      <h1 className={`${styles.heroSubText} text-center py-3 bg-[#915eff]`}>{collection.title}</h1>
+      <h1 className={`${styles.heroSubText} text-center py-7 rounded-xl bg-tertiary`}>{collection.title}</h1>
       <Swiper
         spaceBetween={-50}
         effect={'coverflow'}
@@ -53,19 +53,25 @@ const Card = ({ collection }) => {
 )}
 const Tech = () => {
   return (
-  <div id="work" className=" pt-9">
+    <div id="work" className=" pt-9">
+    <div
+        className={`bg-secondary rounded-2xl ${styles.padding} min-h-[240px]`}
+      >
+
     <motion.div variants={textVariant()}>
-      <p className={`${styles.sectionSubText} text-center pt-3`}>
-        Have a Look at my Portfolio
+      <p className={`${styles.sectionSubText} `}>
+        Have a Look at my Collection
       </p>
-      <h2 className={`${styles.sectionHeadText} text-center`}>
-        My Collection
+      <h2 className={`${styles.sectionHeadText} `}>
+        My Portfolio
       </h2>
     </motion.div>
+    </div>
+    <div className="-mt-[72px] w-80% mx-[56px]">
     {collections.map((collection) => (
           <Card key={collection.title} collection={collection} />
     ))}
-
+</div>
   </div>
 );
 };

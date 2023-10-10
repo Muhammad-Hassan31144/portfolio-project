@@ -1,4 +1,4 @@
-
+import ash from "../components/ash.png"
 import Slider  from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -13,30 +13,38 @@ const About = () => {
   };
 
   return (
-    <section id='about' className={`${styles.paddingX} border-2 border-red-400 flex max-sm:flex-col relative w-full h-screen` }>
+    <>
+      <div
+          className={`bg-secondary rounded-2xl ${styles.padding} min-h-[240px] mt-10 w-full`}
+      >
+          <h1 className={`${styles.heroHeadText} text-tertiary`}>About Myself</h1>
+      </div>
       
-      <div className="flex flex-col max-sm:p-3 justify-start items-center w-1/2 p-16  max-sm:w-full ">
-      <h1 className={`${styles.heroHeadText} text-white pt-4`}>About <span className='text-[#915eff]'>Myself</span></h1>
+    <section id='about' className={`${styles.paddingX} -mt-16 max-w-5xl border-2 ml-[54px] border-red-400 bg-tertiary rounded-[30px] flex max-sm:flex-col justify-end items-center` }>
+      
+      <div className="flex flex-col max-sm:p-3 justify-start items-center w-1/2  max-sm:w-full ">
+      
       <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-          I am a <span className='text-[#915eff]'>Professional Photographer.</span> I will shoot <br className="sm:block hidden" /> your <span className='text-[#915eff]'>Portfolio.</span> I am based in Islamabad.
+          I am a <span className='text-[#FEA82F]'>Professional Photographer.</span> I will shoot <br className="sm:block hidden" /> your <span className='text-[#FEA82F]'>Portfolio.</span> I am based in Islamabad.
         </p>
       </div>
-      <div className="w-1/2 p-4 max-sm:w-full">
+      <div className="w-1/2  h-90% p-4 max-sm:w-full">
         <Slider {...settings}>
-          <div>
-            <img src="src\assets\github.png" alt="Image 1" className="w-full h-auto" />
+          <div className="h-[580px]">
+            <img src={ash} alt="Image 1" className="w-full" />
           </div>
-          <div>
-            <img src="src\assets\github.png" alt="Image 2" className="w-full h-auto" />
-          </div>
-          <div>
-            <img src="src\assets\github.png" alt="Image 3" className="w-full h-auto" />
-          </div>
+          <div className="h-[580px]">   
+            <img src={ash} alt="Image 2" className="w-full" />
+          </div>  
+          <div className="h-[580px]">
+            <img src={ash} alt="Image 3" className="w-full" />
+          </div>    
           {/* Add more images as needed */}
         </Slider>
       </div>
     
     </section>
+    </>
   );
 };
 

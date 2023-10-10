@@ -15,10 +15,14 @@ const ExperienceCard = ({ experience }) => {
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: "#1d1836",
+        background: "#5448C8",
         color: "#fff",
+        borderTopLeftRadius: "20px",
+        borderTopRightRadius: "20px",
+        borderBottomLeftRadius: "20px",
+        borderBottomRightRadius: "20px",
       }}
-      contentArrowStyle={{ borderRight: "7px solid  #232631" }}
+      contentArrowStyle={{ borderRight: "9px solid  #5448C8" }}
       // date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
@@ -39,7 +43,7 @@ const ExperienceCard = ({ experience }) => {
         >
           {experience.company_name}
         </p>
-        <img className="w-full h-auto mt-1 rounded-xl" src={experience.picture} alt="" />
+        <img className="w-full h-[20%] mt-1 rounded-xl" src={experience.picture} alt="" />
       </div>
 
       
@@ -50,16 +54,21 @@ const ExperienceCard = ({ experience }) => {
 const Experience = () => {
   return (
     <div className=" pt-9">
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-center`}>
-          What I have done so far
+      <div
+        className={`bg-secondary rounded-2xl ${styles.padding} min-h-[240px]`}
+      >
+        <motion.div variants={textVariant()}>
+        <p className={`${styles.sectionSubText}`}>
+          The service I provide
         </p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>
+        <h2 className={`${styles.sectionHeadText}`}>
           Work Experience.
         </h2>
       </motion.div>
+      </div>
+      
 
-      <div className='mt-20 flex flex-col'>
+      <div className='-mt-20 flex flex-col'>
         <VerticalTimeline>
           {experiences.map((experience, index) => (
             <ExperienceCard
