@@ -53,9 +53,9 @@ const Card = ({ collection }) => {
 )}
 const Tech = () => {
   return (
-    <div id="work" className=" pt-9">
+    <div id="work" className="pt-9">
     <div
-        className={`bg-secondary rounded-2xl ${styles.padding} min-h-[240px]`}
+        className={`bg-secondary rounded-2xl ${styles.paddingX} pt-5 min-h-[240px] `}
       >
 
     <motion.div variants={textVariant()}>
@@ -67,7 +67,7 @@ const Tech = () => {
       </h2>
     </motion.div>
     </div>
-    <div className="-mt-[72px] w-80% mx-[56px]">
+    <div className="-mt-[72px] w-100% mx-[56px] max-sm:mx-[24px]">
     {collections.map((collection) => (
           <Card key={collection.title} collection={collection} />
     ))}

@@ -3,7 +3,7 @@ import { styles } from "../styles";
 
 const Footer = () => {
   return (
-    <footer className={`bg-secondary rounded-2xl ${styles.paddingX} p-5 min-h-[30px] w-full flex justify-between bg-black-100 rounded-2xl mt-5`}>
+    <footer className={`bg-secondary rounded-2xl ${styles.paddingX} p-5 min-h-[30px] max-sm:min-h-[15px] w-full flex justify-between bg-black-100 rounded-2xl mt-5`}>
       <div
       >
         <p className="">Created By</p>
@@ -15,7 +15,7 @@ const Footer = () => {
           rel='noopener noreferrer'
           className='mx-2 text-white hover:text-tertiary transition duration-300'
         >
-          <img height={48} width={48} src={github} alt=""/>
+          <img className="h-[48px] w-[48px]" src={github} alt=""/>
           </a>
       </footer>
   )

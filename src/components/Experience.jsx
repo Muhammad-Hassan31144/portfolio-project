@@ -55,7 +55,7 @@ const Experience = () => {
   return (
     <div className=" pt-9">
       <div
-        className={`bg-secondary rounded-2xl ${styles.padding} min-h-[240px]`}
+        className={`bg-secondary rounded-2xl ${styles.paddingX} pt-5 min-h-[240px]`}
       >
         <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText}`}>
