@@ -31,7 +31,7 @@ const About = () => {
           I am a <span className='text-[#FEA82F]'>Professional Photographer.</span> I will shoot <br className="sm:block hidden" /> your <span className='text-[#FEA82F]'>Portfolio.</span> I am based in Islamabad.
         </p>
       </div>
-      <div className="w-1/2 p-4 max-sm:w-full border-2 border-black">
+      <div className="w-1/2 p-4 max-sm:w-full ">
         <Slider {...settings}>
           <div className="h-auto max-sm:h-[274px]">
             <img src={ash} alt="Image 1" className="w-full" />
