@@ -7,36 +7,55 @@ import {
     portfolio,
     portrait,
     wedding,
+    fash,
     fash1,
     fash2,
     fash3,
     fash4,
     fash5,
     fash6,
-    fol1,
-    fol2,
-    fol3,
-    fol4,
-    fol5,
-    fol6,
+    fash7,
+    fash8,
+    fash9,
+    fash10,
+    fash11,
+    fash12,
+    fash13,
+    fash14,
+    fash15,
+    fash16,
+    fash17,
+    fash18,
+    fash19,
+    fash20,
+    fash21,
+    fash22,
+    port,
     port1,
     port2,
     port3,
     port4,
     port5,
     port6,
-    wed1,
+    wed1, 
     wed2,
     wed3,
     wed4,
     wed5,
     wed6,
+    wed7,
+    wed8,
+    wed9,
+    wed10,
+    wed11,
+    wed12,
   } from "../assets";
   
   export const navLinks = [
+    
     {
-      id: "about",
-      title: "About",
+      id: "portfolio",
+      title: "Portfolio",
     },
     {
       id: "work",
@@ -45,6 +64,10 @@ import {
     {
       id: "contact",
       title: "Contact",
+    },
+    {
+      id: "testimonials",
+      title: "Testimonials",
     },
   ];
   
@@ -91,19 +114,20 @@ import {
   const collections = [
     {
       title: "Wedding",
-      pic: [wed1, wed2, wed3, wed4, wed5, wed6],
+      pic: [wed1, wed2, wed3, wed4, wed5, wed6,
+      wed7, wed8, wed9, wed10, wed11, wed12],
+      
     },
     {
       title: "Fashion",
-      pic: [fash1, fash2, fash3, fash4, fash5, fash6],
+      pic: [fash, fash1, fash2, fash3, fash4, fash5, fash6,
+      fash7, fash8, fash9, fash10, fash11, fash12, fash13, fash14, fash15, fash16, fash17, fash18, fash19, fash20, fash21, fash22
+      ],
     },
-    {
-      title: "Portfolio",
-      pic: [fol1, fol2, fol3, fol4, fol5, fol6],
-    },
+    
     {
       title: "Portraits",
-      pic: [port1, port2, port3, port4, port5, port6],
+      pic: [port, port1, port2, port3, port4, port5, port6],
     },   
 ];
 

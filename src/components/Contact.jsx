@@ -1,66 +1,83 @@
-
 import { styles } from "../styles";
-import ash from "../components/ash.png"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faWhatsapp, faFacebook } from '@fortawesome/free-brands-svg-icons';
-
+// import ash from "../components/ash.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faWhatsapp,
+  faFacebook,
+} from "@fortawesome/free-brands-svg-icons";
+import BannerAni from "./BannerAni";
 const Contact = () => {
-  
   return (
-    <>
-    <div
-          className={`bg-secondary rounded-2xl ${styles.paddingX} min-h-[35%] mt-10 w-full`}
-      >
-          <h1 className={`${styles.sectionHeadText} text-tertiary pl-3 pt-2`}>Contact Now</h1>
-          
-    </div>
-    
     <div
       id="contact"
-      className={`${styles.paddingX}  flex xl:flex-row flex-col-reverse max-sm:gap-4 gap-10 overflow-hidden`}
+      className={`bg-secondary bg-opacity-95 ${styles.paddingX} justify-between h-screen mt-10 w-full `}
     >
-    
-    
-      <div
-        className='w-full justify-center bg-tertiary p-8 rounded-3xl'
-      >
+      <h1 className={`${styles.sectionHeadText} text-tertiary pl-3 pt-2`}>
+        Contact Now
+      </h1>
 
-      <div className="flex gap-3 ">
-          <img className="w-1/2 rounded-2xl" src={ash} alt="" height={540} />
-          <img className="w-1/2 rounded-2xl" src={ash} alt="" height={540} />
-      </div>
-      <div className="flex justify-center mt-4 mx-7">
-      <a
-          href='https://www.instagram.com/inno_awan' // Replace with your Instagram URL
-          target='_blank'
-          rel='noopener noreferrer'
-          className='mx-2 text-white hover:text-tertiary transition duration-300'
-        >
-          <FontAwesomeIcon icon={faInstagram} size="6x"className="max-sm:w-[64px] max-sm:h-[64px]" />
-        </a>
-        <a
-          href='https://wa.me/923045807224' // Replace with your WhatsApp URL
-          target='_blank'
-          rel='noopener noreferrer'
-          className='mx-2 text-white hover:text-tertiary transition duration-300'
-        >
-          <FontAwesomeIcon icon={faWhatsapp} size="6x" className="max-sm:w-[64px] max-sm:h-[64px]" />
-        </a>
-        <a
-          href='#' // Replace with your Facebook URL
-          target='_blank'
-          rel='noopener noreferrer'
-          className='mx-2 text-white hover:text-tertiary transition duration-300'
-        >
-          <FontAwesomeIcon icon={faFacebook} size="6x" className="max-sm:w-[64px] max-sm:h-[64px]"/>
-        </a>
+      <div className={`${styles.paddingX} flex flex-col max-sm:gap-4 gap-6`}>
+        <div className="w-full rounded-3xl">
+          <p className="text-5xl text-bold text-white">
+            Let&apos;s Connect <br />
+            to <span className="font-sans">Create something Unique</span>
+          </p>
+        </div>
+        <div className="px-0">
+          <BannerAni />
+        </div>
 
+        <div className="flex justify-between mt-4 mx-7">
+          <div className="flex flex-col gap-3">
+            <p className="text-3xl text-white-100">Follow me</p>
+            <a
+              href="https://www.instagram.com/inno_awan" // Replace with your Instagram URL
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-2 text-white hover:text-tertiary transition duration-300"
+            >
+              <FontAwesomeIcon
+                icon={faInstagram}
+                size="4x"
+                className="max-sm:w-[64px] max-sm:h-[64px]"
+              />
+            </a>
+          </div>
+          <div className="flex flex-col gap-3">
+            <p className="text-3xl text-white-100">For Queries</p>
+            <a
+              href="https://wa.me/923045807224" // Replace with your WhatsApp URL
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-2 text-white hover:text-tertiary transition duration-300"
+            >
+              <FontAwesomeIcon
+                icon={faWhatsapp}
+                size="4x"
+                className="max-sm:w-[64px] max-sm:h-[64px]"
+              />
+            </a>
+          </div>
+          <div className="flex flex-col gap-3">
+            <p className="text-3xl text-white-100">For Hire</p>
+            <a
+              href="#" // Replace with your Facebook URL
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-2 text-white hover:text-tertiary transition duration-300"
+            >
+              <FontAwesomeIcon
+                icon={faFacebook}
+                size="4x"
+                className="max-sm:w-[64px] max-sm:h-[64px]"
+              />
+            </a>
+          </div>
+        </div>
+        {/* <BannerAni /> */}
       </div>
-      
     </div>
-    
-</div>
-</>
   );
 };
 

@@ -1,6 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { BrowserRouter } from "react-router-dom";
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Footer, Tech } from "./components";
+import {
+  Contact,
+  Experience,
+  Feedbacks,
+  Hero,
+  Navbar,
+  Footer,
+  Tech,
+} from "./components";
 const App = () => {
   return (
     <BrowserRouter>
@@ -9,17 +17,18 @@ const App = () => {
           <Navbar />
           <Hero />
         </div>
-        <About />
+        {/* <About /> */}
         <Experience />
         <Tech />
         {/* <Works /> */}
         <Feedbacks />
         <div className="relative z-0">
           <Contact />
-          <Footer /> 
+          <Footer />
+          {/* <BannerAni /> */}
         </div>
       </div>
     </BrowserRouter>
   );
-}
+};
 export default App;
