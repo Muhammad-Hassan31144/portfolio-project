@@ -8,18 +8,27 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import { styles } from "../styles";
-import { textVariant } from "../utils/motion";
-
+import { useInView } from "react-intersection-observer";
+import { slideIn } from "../utils/motion";
 const Card = ({ collection }) => {
+  // const animationVariants = {
+  //   initial: { opacity: 0, x: isEven ? "100%" : "-100%" },
+  //   animate: { opacity: 1, x: 0 },
+  // };
+  // const animationVariants = slideIn("left", "easeOut", 0, 1);
+  // const [ref, inView] = useInView({
+  //   triggerOnce: false, // Ensures the animation triggers only once
+  // });
+
   return (
-    <div className="flex flex-col">
-      <h1
+    <div className="flex flex-col max-w-7xl mx-auto ">
+      <motion.h1
         className={`${styles.heroSubText} text-center py-7 rounded-xl bg-tertiary`}
       >
         {collection.title}
-      </h1>
+      </motion.h1>
       <Swiper
-        spaceBetween={-50}
+        spaceBetween={0}
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
@@ -56,12 +65,19 @@ const Card = ({ collection }) => {
   );
 };
 const Tech = () => {
+  const animationVariants = slideIn("up", "easeOut", 0, 2);
+  const [ref, inView] = useInView({ triggerOnce: false });
   return (
-    <div id="portfolio" className="pt-9">
+    <div id="portfolio" className="pt-9 overflow-x-hidden">
       <div
-        className={`bg-secondary bg-opacity-80 rounded-2xl ${styles.paddingX} pt-5 min-h-[240px] `}
+        className={`bg-secondary bg-opacity-80 rounded-2xl ${styles.paddingX} pt-5 min-h-[240px] max-w-7xl mx-auto`}
       >
-        <motion.div variants={textVariant()}>
+        <motion.div
+          ref={ref}
+          animate={inView ? "show" : "hidden"}
+          initial="hidden"
+          variants={animationVariants}
+        >
           <p className={`${styles.sectionSubText} `}>
             Have a Look at my Collection
           </p>

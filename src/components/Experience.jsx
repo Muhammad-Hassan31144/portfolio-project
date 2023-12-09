@@ -4,12 +4,11 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
-
+import { useInView } from "react-intersection-observer";
 import "react-vertical-timeline-component/style.min.css";
-
+import { slideIn } from "../utils/motion";
 import { styles } from "../styles";
 import { experiences } from "../constants";
-import { textVariant } from "../utils/motion";
 
 const ExperienceCard = ({ experience }) => {
   return (
@@ -66,12 +65,19 @@ const ExperienceCard = ({ experience }) => {
 };
 
 const Experience = () => {
+  const animationVariants = slideIn("up", "easeOut", 0, 2);
+  const [ref, inView] = useInView({ triggerOnce: false });
   return (
-    <div id="work" className=" pt-9">
+    <div id="work" className="  pt-9">
       <div
-        className={`bg-secondary bg-opacity-80 rounded-2xl ${styles.paddingX} pt-5 min-h-[240px]`}
+        className={`bg-secondary bg-opacity-80 rounded-2xl ${styles.paddingX} max-w-7xl mx-auto pt-5 min-h-[240px]`}
       >
-        <motion.div variants={textVariant()}>
+        <motion.div
+          ref={ref}
+          animate={inView ? "show" : "hidden"}
+          initial="hidden"
+          variants={animationVariants}
+        >
           <p className={`${styles.sectionSubText}`}>The service I provide</p>
           <h2 className={`${styles.sectionHeadText}`}>Work Experience.</h2>
         </motion.div>

@@ -12,20 +12,17 @@ import {
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="relative z-0 bg-primary">
+      <div className="relative z-0 bg-primary overflow-x-hidden">
+        <Navbar />
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-          <Navbar />
           <Hero />
         </div>
-        {/* <About /> */}
-        <Experience />
         <Tech />
-        {/* <Works /> */}
+        <Experience />
         <Feedbacks />
         <div className="relative z-0">
           <Contact />
           <Footer />
-          {/* <BannerAni /> */}
         </div>
       </div>
     </BrowserRouter>

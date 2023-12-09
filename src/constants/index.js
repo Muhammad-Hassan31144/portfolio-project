@@ -61,13 +61,14 @@ import {
       id: "work",
       title: "Work",
     },
-    {
-      id: "contact",
-      title: "Contact",
-    },
+    
     {
       id: "testimonials",
       title: "Testimonials",
+    },
+    {
+      id: "contact",
+      title: "Contact",
     },
   ];
   

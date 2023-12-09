@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 // import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { styles } from "../styles";
 import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { slideIn } from "../utils/motion";
+
 // import { ComputersCanvas } from "./canvas";
 import waIcon from "../components/whatsapp.png";
 import ash from "../components/ash.png";
@@ -12,23 +15,32 @@ const Hero = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setHasVibrated(true);
-    }, 10000);
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, []);
+  const animationVariants = slideIn("left", "easeOut", 0, 1);
+  const animationVariants1 = slideIn("right", "easeOut", 0, 1);
+  const [ref, inView] = useInView({ triggerOnce: false });
 
   return (
-    <section className={`relative w-full h-screen mx-auto`}>
-      <div
-        className={`absolute inset-0 top-[120px] max-sm:top-24 max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
-      >
-        <div className="flex flex-col justify-center items-center mt-5">
-          <div className="w-5 h-5 rounded-full bg-[#FEA82F]" />
-          <div className="w-1 sm:h-80 h-40 sec-gradient" />
-        </div>
+    <section
+      className={`${styles.paddingX}relative flex justify-between max-sm:flex-col max-sm:py-20 max-sm:px-11 py-16 max-w-7xl mx-auto`}
+    >
+      <div className="flex gap-8 ">
+        {/* <div className="flex flex-col justify-end items-center mt-5">
+          <div className="w-5 h-5 rounded-full bg-tertiary" />
+          <div className="w-1 sm:h-90 h-40 sec-gradient" />
+        </div> */}
 
-        <div className="flex justify-between gap-20">
-          <div className="flex flex-col justify-around  pt-8 max-sm:pt-0">
+        <div className="flex">
+          <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={inView ? "show" : "hidden"}
+            variants={animationVariants}
+            className="flex flex-col justify-center gap-11 pt-8 max-sm:pt-0"
+          >
             <h1 className={`${styles.heroHeadText} text-tertiary`}>
               Hi, I&apos;m Ashad
             </h1>
@@ -37,42 +49,30 @@ const Hero = () => {
               <br className="sm:block hidden" />
               your Portfolio. I am based in Islamabad.
             </p>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               href="#"
-              className=" text-secondary px-5 py-3 bg-tertiary w-1/3 text-xl "
+              className=" text-secondary px-5 py-3 bg-tertiary w-1/3 text-xl max-sm:w-1/2 max-sm:whitespace-nowrap"
             >
               Connect Now
-            </a>
-          </div>
-
-          <div className=" ">
-            <img
-              className="w-80 ml-18 mt-5 h-auto object-cover rounded-full"
-              src={ash}
-              alt="photographer"
-            />
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
-      {/* <ComputersCanvas /> */}
-      <div className="absolute xs:bottom-1 bottom-32 w-full flex justify-center items-center">
-        <a href="#about">
-          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
-            <motion.div
-              animate={{
-                y: [0, 20, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
-            />
-          </div>
-        </a>
-      </div>
-
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "show" : "hidden"}
+        variants={animationVariants1}
+        className="mt-5"
+      >
+        <img
+          className="w-81 mr-10 mt-8 h-auto object-cover rounded-full "
+          src={ash}
+          alt="photographer"
+        />
+      </motion.div>
       <motion.div
         initial={{ x: "-100%", opacity: 0 }}
         animate={hasVibrated ? { x: 0, opacity: 1 } : { x: 0, opacity: 1 }}

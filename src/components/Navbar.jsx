@@ -1,6 +1,10 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
-
+// import { Link as ScrollLink } from "react-scroll";
+import { motion } from "framer-motion";
+import { slideIn } from "../utils/motion";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
@@ -8,18 +12,71 @@ import { logo, menu, close } from "../assets";
 const Navbar = () => {
   const [active, setActive] = useState(" ");
   const [toggle, setToggle] = useState(false);
-  const scrollToSection = (sectionId) => {
+  const animationVariants = slideIn("up", "easeOut", 0, 1);
+
+  const [ref, inView] = useInView({ triggerOnce: false });
+
+  const scrollToSection = (sectionId, duration = 2000) => {
     const section = document.getElementById(sectionId);
+
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      const targetPosition =
+        section.getBoundingClientRect().top + window.scrollY;
+      const startPosition = window.scrollY;
+      const startTime = performance.now();
+
+      const scroll = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const newPosition =
+          startPosition + (targetPosition - startPosition) * progress;
+
+        window.scrollTo(0, newPosition);
+
+        if (progress < 1) {
+          requestAnimationFrame(scroll);
+        }
+      };
+
+      requestAnimationFrame(scroll);
     }
   };
+  const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const navbar = document.getElementById("navbar");
+
+      if (prevScrollPos > currentScrollPos) {
+        // Scroll up
+        navbar.style.transform = "translateY(0)";
+      } else {
+        // Scroll down
+        navbar.style.transform = "translateY(-100%)";
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
 
   return (
     <nav
-      className={`${styles.paddingX} w-full  flex items-center py-4 fixed top-0 z-20 bg-primary`}
+      id="navbar"
+      className={`${styles.paddingX} w-full transition-top duration-300 flex items-center py-4 fixed top-0 z-20 bg-primary`}
     >
-      <div className="w-full max-w-7xl flex justify-between items-center mx-auto">
+      <motion.div
+        className="w-full max-w-7xl flex justify-between items-center mx-auto"
+        ref={ref}
+        animate={inView ? "show" : "hidden"}
+        initial="hidden"
+        variants={animationVariants}
+      >
         <Link
           to="/"
           className="flex items-center gap-2"
@@ -41,12 +98,12 @@ const Navbar = () => {
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
           {navLinks.map((link) => (
-            <li
+            <motion.li
               key={link.id}
+              whileHover={{ scale: 1.1 }} // Adjust the scale factor as needed
               className={`${
                 active === link.title ? "text-tertiary" : "text-secondary"
               } hover:text-tertiary text-[18px] font-medium cursor-pointer`}
-              // onClick={() => {setActive(link.title)}}
             >
               <Link
                 to={`#${link.title}`}
@@ -54,9 +111,10 @@ const Navbar = () => {
               >
                 {link.title}
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
+
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
@@ -68,7 +126,7 @@ const Navbar = () => {
           <div
             className={`${
               !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            } p-6 black-gradient absolute top-[60px] -right-4 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-col gap-4">
               {navLinks.map((link) => (
@@ -88,7 +146,7 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </motion.div>
     </nav>
   );
 };

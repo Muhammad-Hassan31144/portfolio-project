@@ -33,13 +33,13 @@
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .sec-gradient {
-  background: #fea82f; /* Set the background color to the specified color */
+  background: #804dee; /* Set the background color to the specified color */
 
   /* Keep the same gradient style with the new color */
-  background: linear-gradient(-90deg, #fea82f 0%, rgba(60, 51, 80, 0) 100%);
+  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
   background: -webkit-linear-gradient(
     -90deg,
-    #fea82f 0%,
+    #804dee 0%,
     rgba(60, 51, 80, 0) 100%
   );
 }

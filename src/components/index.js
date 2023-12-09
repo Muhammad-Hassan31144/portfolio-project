@@ -8,6 +8,7 @@ import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import Footer from './Footer';
 import BannerAni from './BannerAni';
+import ScrollAnimation from './Scroll';
 export {
   Hero,
   Navbar,
@@ -17,5 +18,6 @@ export {
   Feedbacks,
   Contact, 
   ComputersCanvas, 
-  Footer
+  Footer,
+  ScrollAnimation
 }
